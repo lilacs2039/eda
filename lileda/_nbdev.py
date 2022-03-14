@@ -2,10 +2,12 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {"say_hello": "00_core.ipynb",
-         "HelloSayer": "00_core.ipynb"}
+index = {"setup": "00_eda.ipynb",
+         "describe": "00_eda.ipynb",
+         "savepath": "00_eda.ipynb",
+         "plot": "00_eda.ipynb"}
 
-modules = ["core.py"]
+modules = ["eda.py"]
 
 doc_url = "https://lilacs2039.github.io/lileda/"
 

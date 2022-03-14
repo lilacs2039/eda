@@ -1,3 +1,8 @@
+
+# my work
+output/
+
+# nbdev ----------------------------
 .jekyll-cache/
 Gemfile.lock  
 *.bak

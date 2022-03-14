@@ -10,8 +10,8 @@ entries:
       title: Overview
       url: /
     - output: web,pdf
-      title: module name here
-      url: core.html
+      title: lileda.eda
+      url: eda.html
     output: web
     title: lileda
   output: web
