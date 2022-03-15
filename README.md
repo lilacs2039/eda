@@ -14,6 +14,7 @@ EDA(Exploratory Data Analysis, 探索的データ分析)を簡単にするため
 
 ```
 git clone https://github.com/lilacs2039/lileda.git
+# git submodule add https://github.com/lilacs2039/lileda.git lileda
 cd lileda
 pip install -e .
 ```
@@ -30,20 +31,18 @@ pip install git+https://github.com/lilacs2039/lileda
 
 分析でよく使うライブラリと本ライブラリを読み込み
 
-```python
+```
 %matplotlib inline
 %reload_ext autoreload
 %autoreload 2
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-
-import lileda.eda as lle
 ```
 
 今回の分析データ（iris）を読込んで先頭行を確認。
 
-```python
+```
 from sklearn.datasets import load_iris
 iris = load_iris()
 df = pd.DataFrame(iris.data, columns=iris.feature_names).merge(
@@ -129,22 +128,28 @@ df.head()
 
 
 
+## liledaの読み込み
+
+```
+import lileda.eda as lle
+```
+
 ## グラフの自動保存先を設定
 
 `setup`でグラフの自動保存先を設定できる。デフォルト：./output
 
-```python
+```
 lle.setup(sub_dir = "usage")
 ```
 
-    lileda> Output directory : '/mnt/e/Users/Chilly/Documents/OneDrive/Codes/Jupyter/lileda/output/usage'
+    lileda> Output directory : '/mnt/e/Users/Chilly/Documents/OneDrive/Codes/output/usage'
 
 
 ## データ概要
 
 `describe`でDataFrameの要約（統計量や欠損値の数など）を表示。
 
-```python
+```
 lle.describe(df)
 ```
 
@@ -362,20 +367,17 @@ lle.describe(df)
 
 ### pandasのプロットを整形して保存
 
-```python
+```
 lle.plot(df.plot.scatter("sepal length (cm)","sepal width (cm)",c="target")
         ,tl="散布図", xl="がく長さ[cm]", yl="がく幅[cm]")
 ```
 
-    findfont: Font family ['IPAexGothic'] not found. Falling back to DejaVu Sans.
-    findfont: Font family ['IPAexGothic'] not found. Falling back to DejaVu Sans.
     /mnt/e/Users/Chilly/Documents/OneDrive/Codes/Jupyter/lileda/lileda/eda.py:155: UserWarning: Glyph 12364 (\N{HIRAGANA LETTER GA}) missing from current font.
       elif tl is not None : fig.savefig(savepath(tl))
     /mnt/e/Users/Chilly/Documents/OneDrive/Codes/Jupyter/lileda/lileda/eda.py:155: UserWarning: Glyph 12367 (\N{HIRAGANA LETTER KU}) missing from current font.
       elif tl is not None : fig.savefig(savepath(tl))
     /mnt/e/Users/Chilly/Documents/OneDrive/Codes/Jupyter/lileda/lileda/eda.py:155: UserWarning: Glyph 24133 (\N{CJK UNIFIED IDEOGRAPH-5E45}) missing from current font.
       elif tl is not None : fig.savefig(savepath(tl))
-    findfont: Font family ['IPAexGothic'] not found. Falling back to DejaVu Sans.
     /mnt/e/Users/Chilly/Documents/OneDrive/Codes/Jupyter/lileda/lileda/eda.py:155: UserWarning: Glyph 25955 (\N{CJK UNIFIED IDEOGRAPH-6563}) missing from current font.
       elif tl is not None : fig.savefig(savepath(tl))
     /mnt/e/Users/Chilly/Documents/OneDrive/Codes/Jupyter/lileda/lileda/eda.py:155: UserWarning: Glyph 24067 (\N{CJK UNIFIED IDEOGRAPH-5E03}) missing from current font.
@@ -410,13 +412,13 @@ lle.plot(df.plot.scatter("sepal length (cm)","sepal width (cm)",c="target")
 
 
     
-![png](docs/images/output_18_1.png)
+![png](docs/images/output_20_1.png)
     
 
 
 ### seabornのプロットを整形して保存
 
-```python
+```
 lle.plot(sns.pairplot(data=df, hue="target", height=8)
         ,tl="iris-散布図行列")
 ```
@@ -455,20 +457,58 @@ lle.plot(sns.pairplot(data=df, hue="target", height=8)
 
 
     
-![png](docs/images/output_20_1.png)
+![png](docs/images/output_22_1.png)
     
 
 
-```python
+```
 bbb
 ```
+
+    [autoreload of lileda.eda failed: Traceback (most recent call last):
+      File "/home/lilacs/.local/lib/python3.9/site-packages/IPython/extensions/autoreload.py", line 257, in check
+        superreload(m, reload, self.old_objects)
+      File "/home/lilacs/.local/lib/python3.9/site-packages/IPython/extensions/autoreload.py", line 455, in superreload
+        module = reload(module)
+      File "/usr/lib/python3.9/importlib/__init__.py", line 168, in reload
+        raise ModuleNotFoundError(f"spec not found for the module {name!r}", name=name)
+    ModuleNotFoundError: spec not found for the module 'lileda.eda'
+    ]
+    [autoreload of lileda._nbdev failed: Traceback (most recent call last):
+      File "/home/lilacs/.local/lib/python3.9/site-packages/IPython/extensions/autoreload.py", line 257, in check
+        superreload(m, reload, self.old_objects)
+      File "/home/lilacs/.local/lib/python3.9/site-packages/IPython/extensions/autoreload.py", line 455, in superreload
+        module = reload(module)
+      File "/usr/lib/python3.9/importlib/__init__.py", line 168, in reload
+        raise ModuleNotFoundError(f"spec not found for the module {name!r}", name=name)
+    ModuleNotFoundError: spec not found for the module 'lileda._nbdev'
+    ]
+    [autoreload of lileda.eda failed: Traceback (most recent call last):
+      File "/home/lilacs/.local/lib/python3.9/site-packages/IPython/extensions/autoreload.py", line 257, in check
+        superreload(m, reload, self.old_objects)
+      File "/home/lilacs/.local/lib/python3.9/site-packages/IPython/extensions/autoreload.py", line 455, in superreload
+        module = reload(module)
+      File "/usr/lib/python3.9/importlib/__init__.py", line 168, in reload
+        raise ModuleNotFoundError(f"spec not found for the module {name!r}", name=name)
+    ModuleNotFoundError: spec not found for the module 'lileda.eda'
+    ]
+    [autoreload of lileda._nbdev failed: Traceback (most recent call last):
+      File "/home/lilacs/.local/lib/python3.9/site-packages/IPython/extensions/autoreload.py", line 257, in check
+        superreload(m, reload, self.old_objects)
+      File "/home/lilacs/.local/lib/python3.9/site-packages/IPython/extensions/autoreload.py", line 455, in superreload
+        module = reload(module)
+      File "/usr/lib/python3.9/importlib/__init__.py", line 168, in reload
+        raise ModuleNotFoundError(f"spec not found for the module {name!r}", name=name)
+    ModuleNotFoundError: spec not found for the module 'lileda._nbdev'
+    ]
+
 
 
     ---------------------------------------------------------------------------
 
     NameError                                 Traceback (most recent call last)
 
-    Input In [10], in <module>
+    Input In [23], in <module>
     ----> 1 bbb
 
 

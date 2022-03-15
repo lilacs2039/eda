@@ -88,11 +88,11 @@ def describe(df):
     """
     print("データ形式")
     data = df.head(1).copy()
+    data.rename(index={0:"0"}, inplace=True)
     dtype_row = pd.DataFrame(data.dtypes).T
-    if(len(data.index.names)>=2): dtype_row.name = tuple(["dtype"] * len(data.index.names))
-    else: dtype_row.name = "dtype"
+    dtype_row.rename(index={0:"dtype"}, inplace=True)
     data = pd.concat([data, dtype_row])
-    # data = data.append(dtype_row)
+
     display(data)
     def my_describe(_df):
         smry = _df.describe()

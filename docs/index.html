@@ -54,6 +54,7 @@ nb_path: "nbs/index.ipynb"
 <h2 id="%E7%B7%A8%E9%9B%86%E5%8F%AF%E8%83%BD%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%EF%BC%88%E6%8E%A8%E5%A5%A8%EF%BC%89">&#32232;&#38598;&#21487;&#33021;&#12452;&#12531;&#12473;&#12488;&#12540;&#12523;&#65288;&#25512;&#22888;&#65289;<a class="anchor-link" href="#%E7%B7%A8%E9%9B%86%E5%8F%AF%E8%83%BD%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%EF%BC%88%E6%8E%A8%E5%A5%A8%EF%BC%89"> </a></h2><p>カレントディレクトリに<code>lileda</code>フォルダができる。そのフォルダ内のファイルを編集することで、本ライブラリを編集できる</p>
 
 <pre><code>git clone https://github.com/lilacs2039/lileda.git
+# git submodule add https://github.com/lilacs2039/lileda.git lileda
 cd lileda
 pip install -e .</code></pre>
 <h2 id="%E9%80%9A%E5%B8%B8%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">&#36890;&#24120;&#12452;&#12531;&#12473;&#12488;&#12540;&#12523;<a class="anchor-link" href="#%E9%80%9A%E5%B8%B8%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB"> </a></h2>
@@ -94,8 +95,6 @@ pip install -e .</code></pre>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-
-<span class="kn">import</span> <span class="nn">lileda.eda</span> <span class="k">as</span> <span class="nn">lle</span>
 </pre></div>
 
     </div>
@@ -219,6 +218,29 @@ pip install -e .</code></pre>
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="lileda%E3%81%AE%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF">lileda&#12398;&#35501;&#12415;&#36796;&#12415;<a class="anchor-link" href="#lileda%E3%81%AE%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF"> </a></h2>
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">lileda.eda</span> <span class="k">as</span> <span class="nn">lle</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="%E3%82%B0%E3%83%A9%E3%83%95%E3%81%AE%E8%87%AA%E5%8B%95%E4%BF%9D%E5%AD%98%E5%85%88%E3%82%92%E8%A8%AD%E5%AE%9A">&#12464;&#12521;&#12501;&#12398;&#33258;&#21205;&#20445;&#23384;&#20808;&#12434;&#35373;&#23450;<a class="anchor-link" href="#%E3%82%B0%E3%83%A9%E3%83%95%E3%81%AE%E8%87%AA%E5%8B%95%E4%BF%9D%E5%AD%98%E5%85%88%E3%82%92%E8%A8%AD%E5%AE%9A"> </a></h2>
 </div>
 </div>
@@ -250,7 +272,7 @@ pip install -e .</code></pre>
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>lileda&gt; Output directory : &#39;/mnt/e/Users/Chilly/Documents/OneDrive/Codes/Jupyter/lileda/output/usage&#39;
+<pre>lileda&gt; Output directory : &#39;/mnt/e/Users/Chilly/Documents/OneDrive/Codes/output/usage&#39;
 </pre>
 </div>
 </div>
@@ -564,15 +586,12 @@ pip install -e .</code></pre>
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>findfont: Font family [&#39;IPAexGothic&#39;] not found. Falling back to DejaVu Sans.
-findfont: Font family [&#39;IPAexGothic&#39;] not found. Falling back to DejaVu Sans.
-/mnt/e/Users/Chilly/Documents/OneDrive/Codes/Jupyter/lileda/lileda/eda.py:155: UserWarning: Glyph 12364 (\N{HIRAGANA LETTER GA}) missing from current font.
+<pre>/mnt/e/Users/Chilly/Documents/OneDrive/Codes/Jupyter/lileda/lileda/eda.py:155: UserWarning: Glyph 12364 (\N{HIRAGANA LETTER GA}) missing from current font.
   elif tl is not None : fig.savefig(savepath(tl))
 /mnt/e/Users/Chilly/Documents/OneDrive/Codes/Jupyter/lileda/lileda/eda.py:155: UserWarning: Glyph 12367 (\N{HIRAGANA LETTER KU}) missing from current font.
   elif tl is not None : fig.savefig(savepath(tl))
 /mnt/e/Users/Chilly/Documents/OneDrive/Codes/Jupyter/lileda/lileda/eda.py:155: UserWarning: Glyph 24133 (\N{CJK UNIFIED IDEOGRAPH-5E45}) missing from current font.
   elif tl is not None : fig.savefig(savepath(tl))
-findfont: Font family [&#39;IPAexGothic&#39;] not found. Falling back to DejaVu Sans.
 /mnt/e/Users/Chilly/Documents/OneDrive/Codes/Jupyter/lileda/lileda/eda.py:155: UserWarning: Glyph 25955 (\N{CJK UNIFIED IDEOGRAPH-6563}) missing from current font.
   elif tl is not None : fig.savefig(savepath(tl))
 /mnt/e/Users/Chilly/Documents/OneDrive/Codes/Jupyter/lileda/lileda/eda.py:155: UserWarning: Glyph 24067 (\N{CJK UNIFIED IDEOGRAPH-5E03}) missing from current font.
@@ -723,11 +742,54 @@ findfont: Font family [&#39;IPAexGothic&#39;] not found. Falling back to DejaVu 
 
 <div class="output_area">
 
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>[autoreload of lileda.eda failed: Traceback (most recent call last):
+  File &#34;/home/lilacs/.local/lib/python3.9/site-packages/IPython/extensions/autoreload.py&#34;, line 257, in check
+    superreload(m, reload, self.old_objects)
+  File &#34;/home/lilacs/.local/lib/python3.9/site-packages/IPython/extensions/autoreload.py&#34;, line 455, in superreload
+    module = reload(module)
+  File &#34;/usr/lib/python3.9/importlib/__init__.py&#34;, line 168, in reload
+    raise ModuleNotFoundError(f&#34;spec not found for the module {name!r}&#34;, name=name)
+ModuleNotFoundError: spec not found for the module &#39;lileda.eda&#39;
+]
+[autoreload of lileda._nbdev failed: Traceback (most recent call last):
+  File &#34;/home/lilacs/.local/lib/python3.9/site-packages/IPython/extensions/autoreload.py&#34;, line 257, in check
+    superreload(m, reload, self.old_objects)
+  File &#34;/home/lilacs/.local/lib/python3.9/site-packages/IPython/extensions/autoreload.py&#34;, line 455, in superreload
+    module = reload(module)
+  File &#34;/usr/lib/python3.9/importlib/__init__.py&#34;, line 168, in reload
+    raise ModuleNotFoundError(f&#34;spec not found for the module {name!r}&#34;, name=name)
+ModuleNotFoundError: spec not found for the module &#39;lileda._nbdev&#39;
+]
+[autoreload of lileda.eda failed: Traceback (most recent call last):
+  File &#34;/home/lilacs/.local/lib/python3.9/site-packages/IPython/extensions/autoreload.py&#34;, line 257, in check
+    superreload(m, reload, self.old_objects)
+  File &#34;/home/lilacs/.local/lib/python3.9/site-packages/IPython/extensions/autoreload.py&#34;, line 455, in superreload
+    module = reload(module)
+  File &#34;/usr/lib/python3.9/importlib/__init__.py&#34;, line 168, in reload
+    raise ModuleNotFoundError(f&#34;spec not found for the module {name!r}&#34;, name=name)
+ModuleNotFoundError: spec not found for the module &#39;lileda.eda&#39;
+]
+[autoreload of lileda._nbdev failed: Traceback (most recent call last):
+  File &#34;/home/lilacs/.local/lib/python3.9/site-packages/IPython/extensions/autoreload.py&#34;, line 257, in check
+    superreload(m, reload, self.old_objects)
+  File &#34;/home/lilacs/.local/lib/python3.9/site-packages/IPython/extensions/autoreload.py&#34;, line 455, in superreload
+    module = reload(module)
+  File &#34;/usr/lib/python3.9/importlib/__init__.py&#34;, line 168, in reload
+    raise ModuleNotFoundError(f&#34;spec not found for the module {name!r}&#34;, name=name)
+ModuleNotFoundError: spec not found for the module &#39;lileda._nbdev&#39;
+]
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
 <div class="output_subarea output_text output_error">
 <pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Input <span class="ansi-green-fg">In [10]</span>, in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+Input <span class="ansi-green-fg">In [23]</span>, in <span class="ansi-cyan-fg">&lt;module&gt;</span>
 <span class="ansi-green-fg">----&gt; 1</span> <span class="ansi-yellow-bg">bbb</span>
 
 <span class="ansi-red-fg">NameError</span>: name &#39;bbb&#39; is not defined</pre>
