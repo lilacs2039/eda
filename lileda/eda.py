@@ -56,16 +56,16 @@ def setup(sub_dir = "", save_dir = "output"):
       })
     global _save_dir
     _save_dir = Path(save_dir)/sub_dir  #).resolve()
-    print(f"lileda> Output directory : '{_save_dir.resolve()}'")
+    print(f"lileda> 出力フォルダ : '{_save_dir.resolve()}'")
 
     # matplotlibに日本語フォントのインストール ------------------------------
     # 参考：https://github.com/uehara1414/japanize-matplotlib/blob/master/japanize_matplotlib/japanize_matplotlib.py
-
     FONTS_DIR = 'fonts'
     FONT_NAME = "IPAexGothic"
     FONT_TTF = 'ipaexg.ttf'
 
-    font_dir_path = (Path()/FONTS_DIR).resolve()
+    font_dir_path = (Path()/"lileda"/FONTS_DIR).resolve()  # インストール時：Path()/lileda/FONTS_DIR  開発時：Path()/FONTS_DIR　　インストール時にフォント読み込み成功するように設定。
+    print(f"os.getcwd() : {os.getcwd()}")
     font_files = font_manager.findSystemFonts(fontpaths=[font_dir_path])
     is_support_createFontList = LooseVersion(matplotlib.__version__) < '3.2'
     if is_support_createFontList:
@@ -75,11 +75,10 @@ def setup(sub_dir = "", save_dir = "output"):
         for fpath in font_files:
             font_manager.fontManager.addfont(fpath)
     matplotlib.rc('font', family=FONT_NAME)
+    print(f"lileda> matplotlibに日本語フォント「{FONT_NAME}」を設定しました")
 
-
-# モジュールを読込んだ時に、デフォルト値で初期設定する。printの出力は捨てる。
-with redirect_stdout(open(os.devnull, 'w')):
-    setup()
+# モジュールを読込んだ時に、デフォルト値で初期設定する。printの出力は捨てる。　with redirect_stdout(open(os.devnull, 'w')):
+setup()
 
 
 # Cell

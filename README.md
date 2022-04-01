@@ -31,7 +31,7 @@ pip install git+https://github.com/lilacs2039/lileda
 
 分析でよく使うライブラリと本ライブラリを読み込み
 
-```
+```python
 %matplotlib inline
 %reload_ext autoreload
 %autoreload 2
@@ -42,7 +42,7 @@ import seaborn as sns
 
 今回の分析データ（iris）を読込んで先頭行を確認。
 
-```
+```python
 from sklearn.datasets import load_iris
 iris = load_iris()
 df = pd.DataFrame(iris.data, columns=iris.feature_names).merge(
@@ -130,26 +130,33 @@ df.head()
 
 ## liledaの読み込み
 
-```
+```python
 import lileda.eda as lle
 ```
+
+    lileda> 出力フォルダ : '/mnt/e/Users/Chilly/Documents/OneDrive/Codes/Jupyter/lileda/output'
+    os.getcwd() : /mnt/e/Users/Chilly/Documents/OneDrive/Codes/Jupyter/lileda
+    lileda> matplotlibに日本語フォント「IPAexGothic」を設定しました
+
 
 ## グラフの自動保存先を設定
 
 `setup`でグラフの自動保存先を設定できる。デフォルト：./output
 
-```
+```python
 lle.setup(sub_dir = "usage")
 ```
 
-    lileda> Output directory : '/mnt/e/Users/Chilly/Documents/OneDrive/Codes/output/usage'
+    lileda> 出力フォルダ : '/mnt/e/Users/Chilly/Documents/OneDrive/Codes/Jupyter/lileda/output/usage'
+    os.getcwd() : /mnt/e/Users/Chilly/Documents/OneDrive/Codes/Jupyter/lileda
+    lileda> matplotlibに日本語フォント「IPAexGothic」を設定しました
 
 
 ## データ概要
 
 `describe`でDataFrameの要約（統計量や欠損値の数など）を表示。
 
-```
+```python
 lle.describe(df)
 ```
 
@@ -192,7 +199,7 @@ lle.describe(df)
       <td>0</td>
     </tr>
     <tr>
-      <th>0</th>
+      <th>dtype</th>
       <td>float64</td>
       <td>float64</td>
       <td>float64</td>
@@ -367,150 +374,26 @@ lle.describe(df)
 
 ### pandasのプロットを整形して保存
 
-```
+```python
 lle.plot(df.plot.scatter("sepal length (cm)","sepal width (cm)",c="target")
         ,tl="散布図", xl="がく長さ[cm]", yl="がく幅[cm]")
 ```
 
-    /mnt/e/Users/Chilly/Documents/OneDrive/Codes/Jupyter/lileda/lileda/eda.py:155: UserWarning: Glyph 12364 (\N{HIRAGANA LETTER GA}) missing from current font.
-      elif tl is not None : fig.savefig(savepath(tl))
-    /mnt/e/Users/Chilly/Documents/OneDrive/Codes/Jupyter/lileda/lileda/eda.py:155: UserWarning: Glyph 12367 (\N{HIRAGANA LETTER KU}) missing from current font.
-      elif tl is not None : fig.savefig(savepath(tl))
-    /mnt/e/Users/Chilly/Documents/OneDrive/Codes/Jupyter/lileda/lileda/eda.py:155: UserWarning: Glyph 24133 (\N{CJK UNIFIED IDEOGRAPH-5E45}) missing from current font.
-      elif tl is not None : fig.savefig(savepath(tl))
-    /mnt/e/Users/Chilly/Documents/OneDrive/Codes/Jupyter/lileda/lileda/eda.py:155: UserWarning: Glyph 25955 (\N{CJK UNIFIED IDEOGRAPH-6563}) missing from current font.
-      elif tl is not None : fig.savefig(savepath(tl))
-    /mnt/e/Users/Chilly/Documents/OneDrive/Codes/Jupyter/lileda/lileda/eda.py:155: UserWarning: Glyph 24067 (\N{CJK UNIFIED IDEOGRAPH-5E03}) missing from current font.
-      elif tl is not None : fig.savefig(savepath(tl))
-    /mnt/e/Users/Chilly/Documents/OneDrive/Codes/Jupyter/lileda/lileda/eda.py:155: UserWarning: Glyph 22259 (\N{CJK UNIFIED IDEOGRAPH-56F3}) missing from current font.
-      elif tl is not None : fig.savefig(savepath(tl))
-    /home/lilacs/.local/lib/python3.9/site-packages/IPython/core/events.py:89: UserWarning: Glyph 12364 (\N{HIRAGANA LETTER GA}) missing from current font.
-      func(*args, **kwargs)
-    /home/lilacs/.local/lib/python3.9/site-packages/IPython/core/events.py:89: UserWarning: Glyph 12367 (\N{HIRAGANA LETTER KU}) missing from current font.
-      func(*args, **kwargs)
-    /home/lilacs/.local/lib/python3.9/site-packages/IPython/core/events.py:89: UserWarning: Glyph 24133 (\N{CJK UNIFIED IDEOGRAPH-5E45}) missing from current font.
-      func(*args, **kwargs)
-    /home/lilacs/.local/lib/python3.9/site-packages/IPython/core/events.py:89: UserWarning: Glyph 25955 (\N{CJK UNIFIED IDEOGRAPH-6563}) missing from current font.
-      func(*args, **kwargs)
-    /home/lilacs/.local/lib/python3.9/site-packages/IPython/core/events.py:89: UserWarning: Glyph 24067 (\N{CJK UNIFIED IDEOGRAPH-5E03}) missing from current font.
-      func(*args, **kwargs)
-    /home/lilacs/.local/lib/python3.9/site-packages/IPython/core/events.py:89: UserWarning: Glyph 22259 (\N{CJK UNIFIED IDEOGRAPH-56F3}) missing from current font.
-      func(*args, **kwargs)
-    /home/lilacs/.local/lib/python3.9/site-packages/IPython/core/pylabtools.py:151: UserWarning: Glyph 12364 (\N{HIRAGANA LETTER GA}) missing from current font.
-      fig.canvas.print_figure(bytes_io, **kw)
-    /home/lilacs/.local/lib/python3.9/site-packages/IPython/core/pylabtools.py:151: UserWarning: Glyph 12367 (\N{HIRAGANA LETTER KU}) missing from current font.
-      fig.canvas.print_figure(bytes_io, **kw)
-    /home/lilacs/.local/lib/python3.9/site-packages/IPython/core/pylabtools.py:151: UserWarning: Glyph 24133 (\N{CJK UNIFIED IDEOGRAPH-5E45}) missing from current font.
-      fig.canvas.print_figure(bytes_io, **kw)
-    /home/lilacs/.local/lib/python3.9/site-packages/IPython/core/pylabtools.py:151: UserWarning: Glyph 25955 (\N{CJK UNIFIED IDEOGRAPH-6563}) missing from current font.
-      fig.canvas.print_figure(bytes_io, **kw)
-    /home/lilacs/.local/lib/python3.9/site-packages/IPython/core/pylabtools.py:151: UserWarning: Glyph 24067 (\N{CJK UNIFIED IDEOGRAPH-5E03}) missing from current font.
-      fig.canvas.print_figure(bytes_io, **kw)
-    /home/lilacs/.local/lib/python3.9/site-packages/IPython/core/pylabtools.py:151: UserWarning: Glyph 22259 (\N{CJK UNIFIED IDEOGRAPH-56F3}) missing from current font.
-      fig.canvas.print_figure(bytes_io, **kw)
-
-
 
     
-![png](docs/images/output_20_1.png)
+![png](docs/images/output_20_0.png)
     
 
 
 ### seabornのプロットを整形して保存
 
-```
+```python
 lle.plot(sns.pairplot(data=df, hue="target", height=8)
         ,tl="iris-散布図行列")
 ```
 
-    /mnt/e/Users/Chilly/Documents/OneDrive/Codes/Jupyter/lileda/lileda/eda.py:155: UserWarning: Glyph 25955 (\N{CJK UNIFIED IDEOGRAPH-6563}) missing from current font.
-      elif tl is not None : fig.savefig(savepath(tl))
-    /mnt/e/Users/Chilly/Documents/OneDrive/Codes/Jupyter/lileda/lileda/eda.py:155: UserWarning: Glyph 24067 (\N{CJK UNIFIED IDEOGRAPH-5E03}) missing from current font.
-      elif tl is not None : fig.savefig(savepath(tl))
-    /mnt/e/Users/Chilly/Documents/OneDrive/Codes/Jupyter/lileda/lileda/eda.py:155: UserWarning: Glyph 22259 (\N{CJK UNIFIED IDEOGRAPH-56F3}) missing from current font.
-      elif tl is not None : fig.savefig(savepath(tl))
-    /mnt/e/Users/Chilly/Documents/OneDrive/Codes/Jupyter/lileda/lileda/eda.py:155: UserWarning: Glyph 34892 (\N{CJK UNIFIED IDEOGRAPH-884C}) missing from current font.
-      elif tl is not None : fig.savefig(savepath(tl))
-    /mnt/e/Users/Chilly/Documents/OneDrive/Codes/Jupyter/lileda/lileda/eda.py:155: UserWarning: Glyph 21015 (\N{CJK UNIFIED IDEOGRAPH-5217}) missing from current font.
-      elif tl is not None : fig.savefig(savepath(tl))
-    /home/lilacs/.local/lib/python3.9/site-packages/IPython/core/events.py:89: UserWarning: Glyph 25955 (\N{CJK UNIFIED IDEOGRAPH-6563}) missing from current font.
-      func(*args, **kwargs)
-    /home/lilacs/.local/lib/python3.9/site-packages/IPython/core/events.py:89: UserWarning: Glyph 24067 (\N{CJK UNIFIED IDEOGRAPH-5E03}) missing from current font.
-      func(*args, **kwargs)
-    /home/lilacs/.local/lib/python3.9/site-packages/IPython/core/events.py:89: UserWarning: Glyph 22259 (\N{CJK UNIFIED IDEOGRAPH-56F3}) missing from current font.
-      func(*args, **kwargs)
-    /home/lilacs/.local/lib/python3.9/site-packages/IPython/core/events.py:89: UserWarning: Glyph 34892 (\N{CJK UNIFIED IDEOGRAPH-884C}) missing from current font.
-      func(*args, **kwargs)
-    /home/lilacs/.local/lib/python3.9/site-packages/IPython/core/events.py:89: UserWarning: Glyph 21015 (\N{CJK UNIFIED IDEOGRAPH-5217}) missing from current font.
-      func(*args, **kwargs)
-    /home/lilacs/.local/lib/python3.9/site-packages/IPython/core/pylabtools.py:151: UserWarning: Glyph 25955 (\N{CJK UNIFIED IDEOGRAPH-6563}) missing from current font.
-      fig.canvas.print_figure(bytes_io, **kw)
-    /home/lilacs/.local/lib/python3.9/site-packages/IPython/core/pylabtools.py:151: UserWarning: Glyph 24067 (\N{CJK UNIFIED IDEOGRAPH-5E03}) missing from current font.
-      fig.canvas.print_figure(bytes_io, **kw)
-    /home/lilacs/.local/lib/python3.9/site-packages/IPython/core/pylabtools.py:151: UserWarning: Glyph 22259 (\N{CJK UNIFIED IDEOGRAPH-56F3}) missing from current font.
-      fig.canvas.print_figure(bytes_io, **kw)
-    /home/lilacs/.local/lib/python3.9/site-packages/IPython/core/pylabtools.py:151: UserWarning: Glyph 34892 (\N{CJK UNIFIED IDEOGRAPH-884C}) missing from current font.
-      fig.canvas.print_figure(bytes_io, **kw)
-    /home/lilacs/.local/lib/python3.9/site-packages/IPython/core/pylabtools.py:151: UserWarning: Glyph 21015 (\N{CJK UNIFIED IDEOGRAPH-5217}) missing from current font.
-      fig.canvas.print_figure(bytes_io, **kw)
-
-
 
     
-![png](docs/images/output_22_1.png)
+![png](docs/images/output_22_0.png)
     
-
-
-```
-bbb
-```
-
-    [autoreload of lileda.eda failed: Traceback (most recent call last):
-      File "/home/lilacs/.local/lib/python3.9/site-packages/IPython/extensions/autoreload.py", line 257, in check
-        superreload(m, reload, self.old_objects)
-      File "/home/lilacs/.local/lib/python3.9/site-packages/IPython/extensions/autoreload.py", line 455, in superreload
-        module = reload(module)
-      File "/usr/lib/python3.9/importlib/__init__.py", line 168, in reload
-        raise ModuleNotFoundError(f"spec not found for the module {name!r}", name=name)
-    ModuleNotFoundError: spec not found for the module 'lileda.eda'
-    ]
-    [autoreload of lileda._nbdev failed: Traceback (most recent call last):
-      File "/home/lilacs/.local/lib/python3.9/site-packages/IPython/extensions/autoreload.py", line 257, in check
-        superreload(m, reload, self.old_objects)
-      File "/home/lilacs/.local/lib/python3.9/site-packages/IPython/extensions/autoreload.py", line 455, in superreload
-        module = reload(module)
-      File "/usr/lib/python3.9/importlib/__init__.py", line 168, in reload
-        raise ModuleNotFoundError(f"spec not found for the module {name!r}", name=name)
-    ModuleNotFoundError: spec not found for the module 'lileda._nbdev'
-    ]
-    [autoreload of lileda.eda failed: Traceback (most recent call last):
-      File "/home/lilacs/.local/lib/python3.9/site-packages/IPython/extensions/autoreload.py", line 257, in check
-        superreload(m, reload, self.old_objects)
-      File "/home/lilacs/.local/lib/python3.9/site-packages/IPython/extensions/autoreload.py", line 455, in superreload
-        module = reload(module)
-      File "/usr/lib/python3.9/importlib/__init__.py", line 168, in reload
-        raise ModuleNotFoundError(f"spec not found for the module {name!r}", name=name)
-    ModuleNotFoundError: spec not found for the module 'lileda.eda'
-    ]
-    [autoreload of lileda._nbdev failed: Traceback (most recent call last):
-      File "/home/lilacs/.local/lib/python3.9/site-packages/IPython/extensions/autoreload.py", line 257, in check
-        superreload(m, reload, self.old_objects)
-      File "/home/lilacs/.local/lib/python3.9/site-packages/IPython/extensions/autoreload.py", line 455, in superreload
-        module = reload(module)
-      File "/usr/lib/python3.9/importlib/__init__.py", line 168, in reload
-        raise ModuleNotFoundError(f"spec not found for the module {name!r}", name=name)
-    ModuleNotFoundError: spec not found for the module 'lileda._nbdev'
-    ]
-
-
-
-    ---------------------------------------------------------------------------
-
-    NameError                                 Traceback (most recent call last)
-
-    Input In [23], in <module>
-    ----> 1 bbb
-
-
-    NameError: name 'bbb' is not defined
 
