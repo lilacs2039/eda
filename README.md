@@ -135,8 +135,7 @@ import lileda.eda as lle
 ```
 
     lileda> 出力フォルダ : '/mnt/e/Users/Chilly/Documents/OneDrive/Codes/Jupyter/lileda/output'
-    os.getcwd() : /mnt/e/Users/Chilly/Documents/OneDrive/Codes/Jupyter/lileda
-    lileda> matplotlibに日本語フォント「IPAexGothic」を設定しました
+    lileda> matplotlibに日本語フォント「['IPAexGothic']」を設定しました
 
 
 ## グラフの自動保存先を設定
@@ -148,8 +147,7 @@ lle.setup(sub_dir = "usage")
 ```
 
     lileda> 出力フォルダ : '/mnt/e/Users/Chilly/Documents/OneDrive/Codes/Jupyter/lileda/output/usage'
-    os.getcwd() : /mnt/e/Users/Chilly/Documents/OneDrive/Codes/Jupyter/lileda
-    lileda> matplotlibに日本語フォント「IPAexGothic」を設定しました
+    lileda> matplotlibに日本語フォント「['IPAexGothic']」を設定しました
 
 
 ## データ概要

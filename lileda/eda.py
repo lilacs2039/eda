@@ -10,6 +10,7 @@ from contextlib import redirect_stdout
 from pathlib import Path
 import numpy as np
 import pandas as pd
+import matplotlib
 import matplotlib.pyplot as plt
 import seaborn as sns
 from IPython.display import display
@@ -25,13 +26,9 @@ _save_dir = Path("./output")  # プロットの自動保存ディレクトリ
 pass
 
 # Cell
-import matplotlib
-from matplotlib import font_manager
-from distutils.version import LooseVersion
 def setup(sub_dir = "", save_dir = "output"):
     """ライブラリの初期設定をする。
     """
-
     # --------------  グラフサイズ設定パラメータ  -----------------------
     size_inch, size_px = 15, 2000  #15, 2000が基本。(15,800)も可能（保存したグラフは見切れる）　　colabは、グラフの横幅[px]が画面の横幅[px]を超えると縮小表示、満たないときはそのままグラフ表示する。
 
@@ -44,7 +41,6 @@ def setup(sub_dir = "", save_dir = "output"):
     sns.set_style(style="whitegrid")
     plt.rcParams.update({
       'font.size' : _fontsize
-      ,'font.family' : 'Meiryo' if os.name == 'nt' else ''  # Colabでは日本語フォントがインストールされてないので注意
       ,'figure.figsize' : [size_inch, _h_inch]  #[20.0, 10.0]
       ,'figure.dpi' : _dpi  #300
       ,'savefig.dpi' : _dpi
@@ -59,23 +55,10 @@ def setup(sub_dir = "", save_dir = "output"):
     print(f"lileda> 出力フォルダ : '{_save_dir.resolve()}'")
 
     # matplotlibに日本語フォントのインストール ------------------------------
-    # 参考：https://github.com/uehara1414/japanize-matplotlib/blob/master/japanize_matplotlib/japanize_matplotlib.py
-    FONTS_DIR = 'fonts'
-    FONT_NAME = "IPAexGothic"
-    FONT_TTF = 'ipaexg.ttf'
-
-    font_dir_path = (Path()/"lileda"/FONTS_DIR).resolve()  # インストール時：Path()/lileda/FONTS_DIR  開発時：Path()/FONTS_DIR　　インストール時にフォント読み込み成功するように設定。
-    print(f"os.getcwd() : {os.getcwd()}")
-    font_files = font_manager.findSystemFonts(fontpaths=[font_dir_path])
-    is_support_createFontList = LooseVersion(matplotlib.__version__) < '3.2'
-    if is_support_createFontList:
-        font_list = font_manager.createFontList(font_files)
-        font_manager.fontManager.ttflist.extend(font_list)
-    else:
-        for fpath in font_files:
-            font_manager.fontManager.addfont(fpath)
-    matplotlib.rc('font', family=FONT_NAME)
-    print(f"lileda> matplotlibに日本語フォント「{FONT_NAME}」を設定しました")
+    # matplotlibの日本語化（参考：https://qiita.com/uehara1414/items/6286590d2e1ffbf68f6c）
+    import japanize_matplotlib
+    japanize_matplotlib.japanize()
+    print(f"lileda> matplotlibに日本語フォント「{plt.rcParams['font.family']}」を設定しました")
 
 # モジュールを読込んだ時に、デフォルト値で初期設定する。printの出力は捨てる。　with redirect_stdout(open(os.devnull, 'w')):
 setup()
