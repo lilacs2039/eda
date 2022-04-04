@@ -2,10 +2,16 @@ from pkg_resources import parse_version
 from configparser import ConfigParser
 import setuptools,re,sys
 assert parse_version(setuptools.__version__)>=parse_version('36.2')
+import io
+import sys
+
+# set stdio encoding to work on windows
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
 
 # note: all settings are in settings.ini; edit there, not here
 config = ConfigParser(delimiters=['='])
-config.read('settings.ini',  encoding='utf-8')
+config.read('settings.ini')
 cfg = config['DEFAULT']
 
 cfg_keys = 'version description keywords author author_email'.split()
