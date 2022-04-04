@@ -2,16 +2,10 @@ from pkg_resources import parse_version
 from configparser import ConfigParser
 import setuptools,re,sys
 assert parse_version(setuptools.__version__)>=parse_version('36.2')
-import io
-import sys
-
-# set stdio encoding to work on windows
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
-sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
 
 # note: all settings are in settings.ini; edit there, not here
 config = ConfigParser(delimiters=['='])
-config.read('settings.ini')
+config.read('settings.ini',  encoding='utf-8')
 cfg = config['DEFAULT']
 
 cfg_keys = 'version description keywords author author_email'.split()
@@ -42,7 +36,7 @@ if cfg.get('requirements'): requirements += cfg.get('requirements','').split()
 if cfg.get('pip_requirements'): requirements += cfg.get('pip_requirements','').split()
 dev_requirements = (cfg.get('dev_requirements') or '').split()
 
-long_description = open('README.md').read()
+long_description = open('README.md', encoding="utf-8").read()
 # ![png](docs/images/output_13_0.png)
 for ext in ['png', 'svg']:
     long_description = re.sub(r'!\['+ext+'\]\((.*)\)', '!['+ext+']('+'https://raw.githubusercontent.com/{}/{}'.format(cfg['user'],cfg['lib_name'])+'/'+cfg['branch']+'/\\1)', long_description)
